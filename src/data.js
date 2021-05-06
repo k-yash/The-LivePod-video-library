@@ -109,18 +109,5 @@ export const data = [
     creator: "BeerBiceps",
     type: "Fitness",
     description: `{Today the fitness or the health quotient in India has changed. People are now focused on being healthier and often the question that gets asked is how to be healthy or how to be fit. Adding more value like always through “The Ranveer Show” podcasts, today we have on the show, India's top health & wellness coach Luke Coutinho. Luke Coutinho is a health guru and is known for being a Bollywood fitness trainer. Today he shares the success story of health tips and various fitness tips that have been implemented across multiple clients as a part of Bollywood health. Luke Coutinho's videos are highly informative along with Luke Coutinho's intermittent fasting diet advice. In this Indian podcasts English, Luke Coutinho talks about various aspects of healing motivation through meditation, positivity and fitness advice as well as health advice. These easy fitness hacks will change your life!}`
-  },
-  {
-    id: "WylKHt5SuMI",
-    name:
-      "Dr. Vivek Bindra On Self Motivation, NoFap & The Future of Business in India | The Ranveer Show",
-    creator: "BeerBiceps",
-    type: "Wealth",
-    description: `{Dr. Vivek Bindra is widely considered as the country's TOP business & leadership guru. 
-    He's also one of the country's TOP YouTube influencers. His content is primarily created in Hindi and primarily created for Indian audiences. Dr. Bindra makes use of his years of business and sales experience while combining it with his detailed knowledge about spirituality and the Bhagawad Gita to coach some of the country's top leaders. 
-    
-    His venture badabusiness.com aims to become the nation's top edu-tech company. Badabusiness.com is all about PRACTICAL education. Educating people on professional skills such as sales, finances, raising money, personality development, leadership, amongst a host of others. 
-    
-    In today's SUPER RICH podcast, Vivek Bindra speaks about everything from the current COVID-19 pandemic to the TikTok vs. YouTube situation to celibacy to his formative years.}`
   }
 ];

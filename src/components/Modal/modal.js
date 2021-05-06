@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { v4 as uuid } from "uuid";
-import { usePlaylist } from "../../playlistcontext";
+import { usePlaylist } from "../../Contexts/playlistcontext";
 import { useParams } from "react-router-dom";
-import { getVideoData } from "../videopage";
+import { getVideoData } from "../VideoPage/videopage";
+import {darkToast} from "../VideoPage/toast";
 import "./modal.css";
 
 export const Modal = ({ showModal, setShowModal }) => {
@@ -23,11 +24,13 @@ export const Modal = ({ showModal, setShowModal }) => {
         type: "REMOVE_FROM_PLAYLIST",
         payload: { id: id, video: videoss }
       });
+      darkToast("Removed from playlist!");
     } else {
       dispatch({
         type: "ADD_TO_PLAYLIST",
         payload: { id: id, video: videoss }
       });
+      darkToast("Added to playlist!");
     }
   };
 
@@ -85,6 +88,7 @@ export const Modal = ({ showModal, setShowModal }) => {
                   type: "ADD_PLAYLIST",
                   payload: { id: uuid(), title: playlist, videos: [videoss] }
                 });
+                darkToast("Video added to Playlist!");
                 setPlaylist("");
               }}
               disabled={!playlist}
