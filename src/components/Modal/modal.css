@@ -1,0 +1,51 @@
+.modal-bg {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
+  left: 0;
+  right: 0;
+}
+
+.modal {
+  font-size: 1.3rem;
+  background-color: white;
+  max-height: 300px;
+  max-width: 600px;
+}
+
+.modal-heading {
+  font-size: 1.4rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid grey;
+}
+
+.modal-heading > i {
+  cursor: pointer;
+}
+
+.modal-add {
+  padding: 0.4rem;
+  cursor: pointer;
+  border-top: 1px solid grey;
+}
+
+.modal-playlists {
+  margin: 1rem;
+}
+
+.modal-add > i {
+  margin: 0.4rem;
+}
+
+.hide {
+  display: none;
+}

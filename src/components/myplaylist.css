@@ -1,0 +1,22 @@
+.playlists-div {
+  border-top: 2px solid #c1c7cc;
+  border-width: thin;
+  width: 100%;
+}
+
+.playlists-div .header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem;
+  font-size: 1.3rem;
+}
+
+.playlists-div .section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header > button {
+  padding: 0.2rem;
+}

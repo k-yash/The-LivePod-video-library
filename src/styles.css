@@ -1,0 +1,201 @@
+@import url("https://prism-ui.netlify.app/component.css");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap");
+@import url("https://kit-pro.fontawesome.com/releases/v5.15.3/css/pro.min.css");
+
+* {
+  padding: 0;
+  margin: 0;
+  /* box-sizing: border-box; */
+  font-family: "Titillium Web", sans-serif;
+}
+
+.nav-logo {
+  width: 3rem;
+  margin: 0.2rem;
+  margin-left: 2rem;
+}
+
+.nav-box {
+  width: 100%;
+  position: sticky;
+  z-index: 999;
+  top: 0;
+  height: 5rem;
+}
+
+.nav-btn {
+  margin: 0px;
+}
+
+.main {
+  margin: 0;
+}
+
+.sidebar {
+  width: 200px;
+  position: fixed;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* z-index: 10; */
+  /* background-color: #f8f8f8; */
+}
+
+.main-content {
+  padding: 0.5rem;
+}
+
+.main-content > div {
+  margin-left: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  /* width:100%; */
+  justify-content: center;
+  /* align-items: center; */
+}
+.utility-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.video-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: block;
+  font-size: 1.2rem;
+  align-items: baseline;
+  margin: 0.2rem 0rem;
+  background-color: white;
+}
+
+.btn:hover {
+  background-color: #f0f0f0;
+}
+
+.btn i {
+  margin: 0rem 0.3rem;
+}
+.menu-bar {
+  display: none;
+  font-size: 1.5rem;
+  align-items: center;
+  margin-right: 1.2rem;
+  /* float: right; */
+}
+
+#menu {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+  .sidebar {
+    width: 80px;
+  }
+
+  .btn {
+    /* width: 80px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn span {
+    font-size: 0.8rem;
+  }
+
+  .main-content > div {
+    margin-left: 100px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .sidebar {
+    width: 100%;
+    text-align: center;
+    left: 100%;
+    background-color: #4c516d;
+    transition: all 0.5s;
+    height: 100%;
+    z-index: 10;
+    display: block;
+  }
+
+  .sidebar-left {
+    left: 0%;
+  }
+  .menu-bar {
+    display: block;
+  }
+
+  .btn {
+    width: 100%;
+  }
+  .btn i {
+    display: none;
+  }
+
+  .btn span {
+    font-size: 1.3rem;
+  }
+
+  .main-content > div {
+    margin-left: 0;
+  }
+}
+
+/* #menu :checked ~ .sidebar {
+  left: 0%;
+} */
+
+figure.fixedratio {
+  padding-top: 56.25%;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+}
+
+.card {
+  padding: 0rem;
+  cursor: pointer;
+  border: none;
+  transition: box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.h-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content {
+  display: flex;
+}
+.card-content > img {
+  margin: 0.3rem;
+  box-shadow: none;
+  width: 45px;
+  height: 45px;
+}
+.card-description {
+  margin: 0.5rem;
+}
+.card-description > h4 {
+  font-weight: 700;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  height: min-content;
+  line-height: 1.4rem;
+}
+
+.selected {
+  font-weight: bold;
+  color: red;
+}
