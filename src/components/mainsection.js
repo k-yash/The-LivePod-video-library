@@ -8,6 +8,8 @@ import { History } from "./history";
 import { VideoPage } from "./videopage";
 import { Routes, Route } from "react-router-dom";
 import { ErrorPage } from "./erroepage";
+import { Login } from "./signIn/login";
+import { Signup } from "./signIn/signup";
 
 export const MainSection = ({ ...props }) => {
   return (
@@ -22,6 +24,8 @@ export const MainSection = ({ ...props }) => {
           <Route path="/liked-videos" element={<LikedVideos />} />
           <Route path="/history" element={<History />} />
           <Route path="/video/:videoId" element={<VideoPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
       </div>

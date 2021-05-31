@@ -11,11 +11,11 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(
   <StrictMode>
     <Router>
-        <PlaylistProvider>
-            <DataContextProvider>
-              <App />
-            </DataContextProvider>
-        </PlaylistProvider>
+      <PlaylistProvider>
+        <DataContextProvider>
+          <App />
+        </DataContextProvider>
+      </PlaylistProvider>
     </Router>
   </StrictMode>,
   rootElement
