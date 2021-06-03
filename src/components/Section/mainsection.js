@@ -8,6 +8,9 @@ import { History } from "../History/history";
 import { VideoPage } from "../VideoPage/videopage";
 import { Routes, Route } from "react-router-dom";
 import { ErrorPage } from "../erroepage";
+import { Signup} from "../signIn/signup";
+import { Login } from "../signIn/login";
+import {PrivateRoute} from "../privateRoute";
 
 export const MainSection = ({ ...props }) => {
   return (
@@ -17,11 +20,13 @@ export const MainSection = ({ ...props }) => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/latest" element={<Latest />} />
-          <Route path="/saved" element={<Saved />} />
-          <Route path="/my-playlist" element={<MyPlaylist />} />
-          <Route path="/liked-videos" element={<LikedVideos />} />
-          <Route path="/history" element={<History />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/video/:videoId" element={<VideoPage />} />
+          <PrivateRoute path="/saved" element={<Saved />} />
+          <PrivateRoute path="/my-playlist" element={<MyPlaylist />} />
+          <PrivateRoute path="/liked-videos" element={<LikedVideos />} />
+          <PrivateRoute path="/history" element={<History />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
       </div>

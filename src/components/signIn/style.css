@@ -4,8 +4,9 @@
 }
 
 body {
-	background : url(bg.jpg) no-repeat center center fixed;
-	background-size: cover;
+	/* background : url(bg.jpg) no-repeat center center fixed;
+	background-size: cover; */
+	background-color: #0d1225;
 
 }
 .container{

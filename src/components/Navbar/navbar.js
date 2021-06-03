@@ -1,6 +1,11 @@
+import { Link } from "react-router-dom";
+import { useAuth } from "../../Contexts/authcontext";
 import {SearchBar} from "./searchBar";
 
 export const NavBar = ({setOpenBars}) => {
+
+  const {isUserLoggedIn, logOut} = useAuth();
+
   return (
     <div className="nav-box">
       <img
@@ -13,7 +18,7 @@ export const NavBar = ({setOpenBars}) => {
       <div onClick={()=>{setOpenBars(val=>!val)}} id="menu" class="menu-bar">
         <i class="fad fa-bars"></i>
       </div>
-
+      {isUserLoggedIn?<button onClick={()=>logOut()}>Logout</button>:<Link to="/login">Login</Link>}
       <SearchBar />
 
       {/* <ul class="navigation">

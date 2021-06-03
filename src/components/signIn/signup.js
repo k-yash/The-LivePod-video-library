@@ -1,11 +1,11 @@
 import React from 'react';
-import "./styles.css";
+import "./style.css";
 
 export const Signup = () => {
     return (
         <div class="container">
     	<h1>Sign Up</h1>
-        <div class="box">
+        <div class="box utility-page">
     		<i class="fa fa-user"></i>
     		<input type="name" name="name" id="name" placeholder="Enter Your Name"/>
     	</div>
