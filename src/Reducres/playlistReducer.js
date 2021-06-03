@@ -2,6 +2,10 @@ export const playlistReducer = (state, action) => {
     console.log(state.MyPlaylists);
   
     switch (action.type) {
+      case "SET_PLAYLIST":
+        return (state = {
+          
+        })
       case "ADD_PLAYLIST":
         return (state = {
           MyPlaylists: state.MyPlaylists.concat(action.payload)
