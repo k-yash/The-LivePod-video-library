@@ -10,7 +10,7 @@ export const Login = () => {
         password:""
     })
 
-    const {isUserLoggedIn, setIsUserLoggedIn , authenticateUser} = useAuth();
+    const {authenticateUser} = useAuth();
     const { state } = useLocation();
 
 

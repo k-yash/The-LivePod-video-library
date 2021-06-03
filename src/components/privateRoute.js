@@ -5,10 +5,10 @@ import {useAuth} from "../Contexts/authcontext";
 import React from 'react'
 
 export const PrivateRoute = ({path, ...props}) => {
-    const {isUserLoggedIn} = useAuth();
+    const {isUserLogIn} = useAuth();
 
     return (
-       isUserLoggedIn? 
+       isUserLogIn? 
        <Route {...props} path={path}/> : 
        <Navigate state= {{from :path}} replace to="/login" />
     )

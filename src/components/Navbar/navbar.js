@@ -3,8 +3,8 @@ import { useAuth } from "../../Contexts/authcontext";
 import {SearchBar} from "./searchBar";
 
 export const NavBar = ({setOpenBars}) => {
-
-  const {isUserLoggedIn, logOut} = useAuth();
+ 
+  const {isUserLogIn, logOut} = useAuth();
 
   return (
     <div className="nav-box">
@@ -18,7 +18,7 @@ export const NavBar = ({setOpenBars}) => {
       <div onClick={()=>{setOpenBars(val=>!val)}} id="menu" class="menu-bar">
         <i class="fad fa-bars"></i>
       </div>
-      {isUserLoggedIn?<button onClick={()=>logOut()}>Logout</button>:<Link to="/login">Login</Link>}
+      {isUserLogIn?<button onClick={()=>logOut()}>Logout</button>:<Link to="/login">Login</Link>}
       <SearchBar />
 
       {/* <ul class="navigation">
