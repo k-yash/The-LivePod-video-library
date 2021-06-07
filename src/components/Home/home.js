@@ -1,14 +1,13 @@
 import { useData } from "../../Contexts/datacontext";
-import { Card } from "../Card/card";
+import { HomeCard } from "./homeCard";
 
 export const Home = () => {
 
   const {videoData} = useData();
-
   return (
     <div>
       {videoData.map((video) => {
-        return <Card video={video} />;
+        return <HomeCard video={video} />;
       })}
     </div>
   );

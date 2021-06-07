@@ -7,7 +7,7 @@ export const LikedVideos = () => {
     <div className="utility-page">
       <h1>Liked Videos</h1>
       <div className="video-content">
-        {state.liked.map((video) => {
+        {state.liked.map(({video}) => {
           return <Card video={video} />;
         })}
       </div>

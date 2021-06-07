@@ -1,8 +1,8 @@
-import { Thumbnail } from "./thumbnail";
+import { Thumbnail } from "../Card/thumbnail";
 import { Link } from "react-router-dom";
 import { useData } from "../../Contexts/datacontext";
 
-export const Card = ({ video }) => {
+export const HomeCard = ({ video }) => {
   const { dispatch } = useData();
 
   return (
@@ -32,34 +32,3 @@ export const Card = ({ video }) => {
     </>
   );
 };
-
-// export const HorizontalCard = ({ video }) => {
-//   const { setRoute } = useRoute();
-//   const { setCurrent } = useCurrVideo();
-//   const { dispatch } = useData();
-
-//   const playMyhVideo = () => {
-//     dispatch({ type: "ADD_HISTORY", payload: video });
-//     setCurrent(video);
-//     setRoute("VideoPage");
-//   };
-
-//   return (
-//     <>
-//       <div
-//         clasName="h-card"
-//         onClick={() => {
-//           playMyhVideo();
-//         }}
-//       >
-//         <Thumbnail id={video.videoId} />
-//         <div className="card-content">
-//           <div className="card-description">
-//             <h4>{video.name}</h4>
-//             <p className="grey-text">{video.creator}</p>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };

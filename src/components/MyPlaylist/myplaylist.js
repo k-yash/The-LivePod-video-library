@@ -3,6 +3,7 @@ import { usePlaylist } from "../../Contexts/playlistcontext";
 import { Card } from "../Card/card";
 export const MyPlaylist = () => {
   const { state, dispatch } = usePlaylist();
+  console.log("woka",state.MyPlaylists)
 
   return (
     <div className="utility-page">
@@ -12,8 +13,8 @@ export const MyPlaylist = () => {
           return (
             <div className="playlists-div">
               <div className="header">
-                <h2>{playlist.title}</h2>
-                {playlist.title !== "Watch later" && (
+                <h2>{playlist.name}</h2>
+                {playlist.name !== "Watch later" && (
                   <button
                     onClick={() => {
                       dispatch({
@@ -27,7 +28,7 @@ export const MyPlaylist = () => {
                 )}
               </div>
               <div className="section">
-                {playlist.videos.map((video) => {
+                {playlist.videos.map(({video}) => {
                   return <Card video={video} />;
                 })}
               </div>

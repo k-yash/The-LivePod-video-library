@@ -4,11 +4,11 @@ import { v4 as uuid } from "uuid";
 
 export const PlaylistContext = createContext();
 
-export const MyPlaylists = [{ id: uuid(), title: "Watch later", videos: [] }];
+export const MyPlaylists = [];
 
 
 export const PlaylistProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(playlistReducer, { MyPlaylists });
+  const [state, dispatchPlaylist] = useReducer(playlistReducer, { MyPlaylists });
 
   const ifPresentInPlaylist = (playlistId, videoId) => {
     const resultedPlaylist = state.MyPlaylists.find(
@@ -20,7 +20,7 @@ export const PlaylistProvider = ({ children }) => {
   };
 
   return (
-    <PlaylistContext.Provider value={{ state, dispatch, ifPresentInPlaylist }}>
+    <PlaylistContext.Provider value={{ state, dispatchPlaylist, ifPresentInPlaylist }}>
       {children}
     </PlaylistContext.Provider>
   );
