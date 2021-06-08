@@ -7,7 +7,7 @@ export const Home = () => {
   return (
     <div>
       {videoData.map((video) => {
-        return <HomeCard video={video} />;
+        return <HomeCard key = {video.id} video={video} />;
       })}
     </div>
   );

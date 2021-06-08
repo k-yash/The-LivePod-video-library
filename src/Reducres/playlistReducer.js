@@ -35,7 +35,7 @@ export const playlistReducer = (state, action) => {
               : thisPlaylist
           )
         });
-      case "DELETE_WISHLIST":
+      case "DELETE_PLAYLIST":
         return (state = {
           MyPlaylists: state.MyPlaylists.filter(({ id }) => id !== action.payload)
         });

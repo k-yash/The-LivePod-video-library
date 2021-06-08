@@ -1,9 +1,21 @@
 import "./myplaylist.css";
 import { usePlaylist } from "../../Contexts/playlistcontext";
 import { Card } from "../Card/card";
+import { restApiCalls } from "../../Contexts/Utilities/RestAPICalls";
+import { useAuth } from "../../Contexts/authcontext";
+
+
 export const MyPlaylist = () => {
-  const { state, dispatch } = usePlaylist();
-  console.log("woka",state.MyPlaylists)
+  const { state, dispatchPlaylist } = usePlaylist();
+  const {userId} = useAuth();
+
+  const deletePlaylistHandler = async(playlistId) =>{
+    const response = await restApiCalls("DELETE", `playlist/${userId}/${playlistId}`)
+    if(response.success){
+      dispatchPlaylist({ type: "DELETE_PLAYLIST", payload: playlistId });
+    }
+    
+  }
 
   return (
     <div className="utility-page">
@@ -14,14 +26,9 @@ export const MyPlaylist = () => {
             <div className="playlists-div">
               <div className="header">
                 <h2>{playlist.name}</h2>
-                {playlist.name !== "Watch later" && (
+                {playlist.name !== "watch-later" && (
                   <button
-                    onClick={() => {
-                      dispatch({
-                        type: "DELETE_WISHLIST",
-                        payload: playlist.id
-                      });
-                    }}
+                    onClick={() => { deletePlaylistHandler(playlist.id)}}
                   >
                     Delete Wishlist
                   </button>
@@ -29,7 +36,7 @@ export const MyPlaylist = () => {
               </div>
               <div className="section">
                 {playlist.videos.map(({video}) => {
-                  return <Card video={video} />;
+                  return <Card key={video.id} video={video} />;
                 })}
               </div>
             </div>

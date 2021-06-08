@@ -27,10 +27,10 @@ export const Login = () => {
 
     return (
         <div >
-        <div class="container utility-page">
+        <div className ="container utility-page">
             <h1>Log In</h1>
-            <div class="box">
-                <i class="fa fa-envelope"></i>
+            <div className="box">
+                <i className="fa fa-envelope"></i>
                 <input 
                 type="email" 
                 name="email" 
@@ -39,8 +39,8 @@ export const Login = () => {
                 onChange={inputEvent} 
                 placeholder="Enter Your Email"/>
             </div>
-            <div class="box">
-                <i class="fa fa-key"></i>
+            <div className="box">
+                <i className="fa fa-key"></i>
                 <input 
                 type="password" 
                 name="password" 
@@ -50,7 +50,7 @@ export const Login = () => {
                 placeholder="Enter Your Password"/>
             </div>
             <p>don't have an account? Click here.</p>
-            <button onClick={()=>{authenticateCredentials()}} class="btn">Sign In</button>
+            <button onClick={()=>{authenticateCredentials()}} className="btn">Sign In</button>
         </div>
         </div>
     )

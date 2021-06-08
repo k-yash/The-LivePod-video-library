@@ -1,18 +1,26 @@
 import { Thumbnail } from "./thumbnail";
 import { Link } from "react-router-dom";
 import { useData } from "../../Contexts/datacontext";
+import {restApiCalls} from "../../Contexts/Utilities/RestAPICalls";
+import { useAuth } from "../../Contexts/authcontext";
 
 export const Card = ({ video }) => {
   const { dispatch } = useData();
+  const {userId} = useAuth();
+
+  const addToHistoryHandler = async() =>{
+    const response = await restApiCalls("POST", `history/${userId}`, {videoId:video.id});
+    if(response.success){
+      dispatch({ type: "ADD_HISTORY", payload: video });
+    }
+  }
 
   return (
     <>
       <Link style={{ textDecoration: "none" }} to={`/video/${video.videoId}`}>
         <div
           className="card"
-          onClick={() => {
-            dispatch({ type: "ADD_HISTORY", payload: video });
-          }}
+          onClick={() => { addToHistoryHandler()}}
         >
           <Thumbnail id={video.videoId} />
           <div className="card-content">

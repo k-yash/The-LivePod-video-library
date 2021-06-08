@@ -60,6 +60,7 @@ export default function App() {
       (async()=>{
       try{
         const response = await restApiCalls("GET",`playlist/${userId}`);
+        console.log(response.response.playlists)
         dispatchPlaylist({type: "SET_PLAYLIST", payload: response.response.playlists})
 
       }catch(error){

@@ -10,7 +10,7 @@ export const dataReducer = (state, action) => {
       case "REMOVE_FROM_SAVED_VIDEOS":
         return (state = {
           ...state,
-          saved: state.saved.filter(({video}) => video.videoId !== action.payload.id)
+          saved: state.saved.filter(({video}) => video.videoId !== action.payload.videoId)
         });
   
       case "ADD_TO_LIKED_VIDEOS":
@@ -20,7 +20,7 @@ export const dataReducer = (state, action) => {
       case "REMOVE_FROM_LIKED_VIDEOS":
         return (state = {
           ...state,
-          liked: state.liked.filter(({video}) => video.videoId !== action.payload.id)
+          liked: state.liked.filter(({video}) => video.videoId !== action.payload.videoId)
         });
 
       case "ADD_HISTORY":

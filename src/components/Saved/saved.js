@@ -7,7 +7,7 @@ export const Saved = () => {
       <h1>Saved Videos</h1>
       <div className="video-content">
         {state.saved.map(({video}) => {
-          return <Card video={video} />;
+          return <Card key={video.id} video={video} />;
         })}
       </div>
     </div>

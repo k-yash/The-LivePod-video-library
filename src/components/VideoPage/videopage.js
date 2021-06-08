@@ -4,20 +4,55 @@ import { useData } from "../../Contexts/datacontext";
 import { useState } from "react";
 import { Modal } from "../Modal/modal";
 import { useParams } from "react-router-dom";
-import { data } from "../../data";
-
-export const getVideoData = (videoId) => {
-  return data.find((video) => video.id === videoId);
-};
+import {restApiCalls} from "../../Contexts/Utilities/RestAPICalls";
+import { useAuth } from "../../Contexts/authcontext";
+// import { data } from "../../data";
 
 export const VideoPage = () => {
+  const {userId} = useAuth();
   const [showModal, setShowModal] = useState(false);
   const { videoId } = useParams();
-  const { dispatch, ifPresentInSaved, ifPresentInLikeVideos } = useData();
+  const {getVideoData, dispatch, ifPresentInSaved, ifPresentInLikeVideos } = useData();
   const video = getVideoData(videoId);
+
+
+
+
+  const likedVideosHandler = async() =>{
+    if(ifPresentInLikeVideos(video.videoId)){
+      const response = await restApiCalls("DELETE",`likedvideos/${userId}/${video.id}`)
+      if(response.success){
+        dispatch({ type: "REMOVE_FROM_LIKED_VIDEOS", payload: video })
+      }
+    }else{
+      const response = await restApiCalls("POST",`likedvideos/${userId}`, {videoId:video.id})
+      if(response.success){
+        dispatch({ type: "ADD_TO_LIKED_VIDEOS", payload: video })
+      }
+      
+    }
+  }
+
+  const savedVideosHandler = async() => {
+    if(ifPresentInSaved(video.videoId)){
+      const response = await restApiCalls("DELETE",`savedvideos/${userId}/${video.id}`)
+      if(response.success){
+        dispatch({ type: "REMOVE_FROM_SAVED_VIDEOS", payload: video })
+      }
+      
+    }else{
+      const response = await restApiCalls("POST",`savedvideos/${userId}`, {videoId:video.id})
+      if(response.success){
+        dispatch({ type: "ADD_TO_SAVED_VIDEOS", payload: video })
+      }
+      
+    }
+ 
+  }
+
   return (
     <div className="videopage">
-      <Iframe id={video.id} />
+      <Iframe id={video.videoId} />
       <div className="card-content">
         <img
           className="avatar"
@@ -34,13 +69,9 @@ export const VideoPage = () => {
       <div className="func-icon">
         <i
           style={{
-            color: ifPresentInLikeVideos(video.id) ? "skyblue" : "grey"
+            color: ifPresentInLikeVideos(video.videoId) ? "skyblue" : "grey"
           }}
-          onClick={() =>
-            ifPresentInLikeVideos(video.id)
-              ? dispatch({ type: "REMOVE_FROM_LIKED_VIDEOS", payload: video })
-              : dispatch({ type: "ADD_TO_LIKED_VIDEOS", payload: video })
-          }
+          onClick={() => likedVideosHandler() }
           className="far fa-thumbs-up"
         ></i>
         <i
@@ -51,12 +82,8 @@ export const VideoPage = () => {
         ></i>
 
         <i
-          style={{ color: ifPresentInSaved(video.id) ? "red" : "grey" }}
-          onClick={() =>
-            ifPresentInSaved(video.id)
-              ? dispatch({ type: "REMOVE_FROM_SAVED_VIDEOS", payload: video })
-              : dispatch({ type: "ADD_TO_SAVED_VIDEOS", payload: video })
-          }
+          style={{ color: ifPresentInSaved(video.videoId) ? "red" : "grey" }}
+          onClick={() => savedVideosHandler() }
           className="far fa-bookmark"
         ></i>
       </div>

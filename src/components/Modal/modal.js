@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { v4 as uuid } from "uuid";
 import { usePlaylist } from "../../Contexts/playlistcontext";
 import { useParams } from "react-router-dom";
-import { getVideoData } from "../VideoPage/videopage";
+// import { getVideoData } from "../VideoPage/videopage";
 import {darkToast} from "../VideoPage/toast";
 import "./modal.css";
+import { useData } from "../../Contexts/datacontext";
 
 export const Modal = ({ showModal, setShowModal }) => {
   const { videoId } = useParams();
+  const {getVideoData} = useData();
   const [playlist, setPlaylist] = useState("");
   const [showInputBox, setShowInputbox] = useState(false);
   const { state, dispatch, ifPresentInPlaylist } = usePlaylist();

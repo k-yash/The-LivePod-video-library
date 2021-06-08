@@ -15,8 +15,8 @@ export const NavBar = ({setOpenBars}) => {
         srcSet=""
       />
       {/* <input type="checkbox"  /> */}
-      <div onClick={()=>{setOpenBars(val=>!val)}} id="menu" class="menu-bar">
-        <i class="fad fa-bars"></i>
+      <div onClick={()=>{setOpenBars(val=>!val)}} id="menu" className="menu-bar">
+        <i className="fad fa-bars"></i>
       </div>
       {isUserLogIn?<button onClick={()=>logOut()}>Logout</button>:<Link to="/login">Login</Link>}
       <SearchBar />

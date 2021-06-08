@@ -8,7 +8,7 @@ export const LikedVideos = () => {
       <h1>Liked Videos</h1>
       <div className="video-content">
         {state.liked.map(({video}) => {
-          return <Card video={video} />;
+          return <Card key={video.id} video={video} />;
         })}
       </div>
     </div>
