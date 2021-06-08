@@ -11,11 +11,11 @@ export const PlaylistProvider = ({ children }) => {
   const [state, dispatchPlaylist] = useReducer(playlistReducer, { MyPlaylists });
 
   const ifPresentInPlaylist = (playlistId, videoId) => {
+    console.log(videoId)
     const resultedPlaylist = state.MyPlaylists.find(
       (playlist) => playlist.id === playlistId
     );
-    const val = resultedPlaylist.videos.some((video) => video.id === videoId);
-
+    const val = resultedPlaylist.videos.some(({video}) => video.videoId === videoId);
     return val;
   };
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-const BackendApi = " https://the-live-pod.herokuapp.com";
+const BackendApi = "https://the-live-pod.herokuapp.com";
 
 export const restApiCalls = async(method, route, data = null) =>{
     switch (method) {

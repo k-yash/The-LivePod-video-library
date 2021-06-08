@@ -6,35 +6,49 @@ import { useParams } from "react-router-dom";
 import {darkToast} from "../VideoPage/toast";
 import "./modal.css";
 import { useData } from "../../Contexts/datacontext";
+import {restApiCalls} from "../../Contexts/Utilities/RestAPICalls";
+import { useAuth } from "../../Contexts/authcontext";
 
 export const Modal = ({ showModal, setShowModal }) => {
   const { videoId } = useParams();
   const {getVideoData} = useData();
   const [playlist, setPlaylist] = useState("");
   const [showInputBox, setShowInputbox] = useState(false);
-  const { state, dispatch, ifPresentInPlaylist } = usePlaylist();
+  const { state, dispatchPlaylist, ifPresentInPlaylist } = usePlaylist();
   const videoss = getVideoData(videoId);
   const inputRef = useRef(null);
+  const {userId} = useAuth();
 
   useEffect(() => {
     inputRef.current.focus();
   });
 
-  const playlistHandler = (id) => {
-    if (ifPresentInPlaylist(id, videoss.id)) {
-      dispatch({
-        type: "REMOVE_FROM_PLAYLIST",
-        payload: { id: id, video: videoss }
-      });
-      darkToast("Removed from playlist!");
+  const playlistHandler = async(playlistId) => {
+    if (ifPresentInPlaylist(playlistId, videoss.videoId)) {
+      const response = await restApiCalls("DELETE", `playlist/${userId}/${playlistId}/${videoss.id}`);
+      if(response.success){
+        dispatchPlaylist({ type: "REMOVE_FROM_PLAYLIST", payload: { id: playlistId, videoId: videoss.videoId }});
+        darkToast("Removed from playlist!")};
     } else {
-      dispatch({
-        type: "ADD_TO_PLAYLIST",
-        payload: { id: id, video: videoss }
-      });
-      darkToast("Added to playlist!");
+     const response = await restApiCalls("POST", `playlist/${userId}/${playlistId}`, {videoId: videoss.id});
+     if(response.success){
+        dispatchPlaylist({ type: "ADD_TO_PLAYLIST", payload: { id: playlistId, video: videoss }});
+        darkToast("Added to playlist!");
+     }
     }
   };
+
+  const createNewPlaylist = async() =>{
+    const response = await restApiCalls("POST", `playlist/${userId}`, {playlistName:playlist, videoId: videoss.id});
+    if(response.success){
+      dispatchPlaylist({type: "SET_PLAYLIST", payload: response.response.playlists});
+      setShowModal((val) => !val);
+      setShowInputbox((val) => !val);
+      darkToast("Video added to Playlist!");
+      setPlaylist("");
+    }
+    
+  }
 
   return (
     <div className={`modal-bg ${showModal ? "" : "hide"} `}>
@@ -57,7 +71,7 @@ export const Modal = ({ showModal, setShowModal }) => {
             return (
               <div>
                 <input
-                  checked={ifPresentInPlaylist(id, videoss.id)}
+                  checked={ifPresentInPlaylist(id, videoss.videoId)}
                   onClick={() => playlistHandler(id)}
                   type="checkbox"
                 />
@@ -83,16 +97,7 @@ export const Modal = ({ showModal, setShowModal }) => {
               onChange={(event) => setPlaylist(event.target.value)}
             />
             <button
-              onClick={() => {
-                setShowModal((val) => !val);
-                setShowInputbox((val) => !val);
-                dispatch({
-                  type: "ADD_PLAYLIST",
-                  payload: { id: uuid(), title: playlist, videos: [videoss] }
-                });
-                darkToast("Video added to Playlist!");
-                setPlaylist("");
-              }}
+              onClick={() => { createNewPlaylist(); }}
               disabled={!playlist}
             >
               Create

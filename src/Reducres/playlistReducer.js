@@ -16,20 +16,21 @@ export const playlistReducer = (state, action) => {
             thisPlaylist.id === action.payload.id
               ? {
                   ...thisPlaylist,
-                  videos: [...thisPlaylist.videos, action.payload.video]
+                  videos: [...thisPlaylist.videos, {video: action.payload.video}]
                 }
               : thisPlaylist
           )
         });
   
       case "REMOVE_FROM_PLAYLIST":
+        console.log(state.MyPlaylists)
         return (state = {
           MyPlaylists: state.MyPlaylists.map((thisPlaylist) =>
             thisPlaylist.id === action.payload.id
               ? {
                   ...thisPlaylist,
                   videos: thisPlaylist.videos.filter(
-                    ({ id }) => id !== action.payload.video.id
+                    ({ video }) => video.videoId !== action.payload.videoId
                   )
                 }
               : thisPlaylist

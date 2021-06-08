@@ -16,15 +16,14 @@ export const DataContextProvider = ({ children }) => {
     history: []
   });
 
-  const [videoData, setVedioData] = useState(state.videos);
+  const [videoData, setVideoData] = useState(state.videos);
 
   useEffect(()=>{
     (async ()=>{
       try{
        const data = await restApiCalls("GET","videos");
-       setVedioData(data.Videos);
-       dispatch({type:"SET", payload:{name: "videos", data:data.Videos}})
-
+       setVideoData(data.videos);
+       dispatch({type:"SET", payload:{name: "videos", data:data.videos}})
   
       }catch(error){
         console.log(error);
@@ -41,7 +40,7 @@ export const DataContextProvider = ({ children }) => {
     const filterData = state.videos.filter((item) => {
       return item.name.toLowerCase().includes(event.target.value.toLowerCase());
     });
-    setVedioData(filterData);
+    setVideoData(filterData);
     
   };
 
@@ -57,7 +56,7 @@ export const DataContextProvider = ({ children }) => {
 
   return (
     <DataContext.Provider
-      value={{ state, dispatch, ifPresentInSaved, ifPresentInLikeVideos, videoData, setVedioData, onSearchData, getVideoData }}
+      value={{ state, dispatch, ifPresentInSaved, ifPresentInLikeVideos, videoData, setVideoData, onSearchData, getVideoData }}
     >
       {children}
     </DataContext.Provider>

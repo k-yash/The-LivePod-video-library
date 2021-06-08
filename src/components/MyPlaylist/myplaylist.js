@@ -25,8 +25,8 @@ export const MyPlaylist = () => {
           return (
             <div className="playlists-div">
               <div className="header">
-                <h2>{playlist.name}</h2>
-                {playlist.name !== "watch-later" && (
+                <h2>{playlist.title}</h2>
+                {playlist.title !== "Watch later" && (
                   <button
                     onClick={() => { deletePlaylistHandler(playlist.id)}}
                   >
