@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { useAuth } from '../../Contexts/authcontext';
-import {useLocation} from "react-router-dom";
+import {useLocation, Link} from "react-router-dom";
 import "./style.css";
 
 export const Login = () => {
@@ -49,7 +49,7 @@ export const Login = () => {
                 onChange={inputEvent} 
                 placeholder="Enter Your Password"/>
             </div>
-            <p>don't have an account? Click here.</p>
+            <Link to="/signup">don't have an account? Click here.</Link>
             <button onClick={()=>{authenticateCredentials()}} className="btn">Sign In</button>
         </div>
         </div>

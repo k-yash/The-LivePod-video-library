@@ -26,13 +26,26 @@ export const AuthProvider = ({children}) =>{
 
     }
 
+    const createUserCredentials = async(userData)=>{
+        try{
+            const response = await restApiCalls("POST", 'signup', userData);
+            if(response.success){
+                successToast("successfully signed up!")
+                navigate("/login");
+            }
+
+        }catch(err){
+            console.log(err);
+        }
+    }
+
     const logOut = () =>{
         localStorage.removeItem("login");
         setIsUserLogIn(false);
     }
 
     return(
-        <AuthContext.Provider value={{isUserLogIn, setIsUserLogIn, authenticateUser, logOut, userId}}>
+        <AuthContext.Provider value={{isUserLogIn, setIsUserLogIn, authenticateUser, logOut, userId, createUserCredentials}}>
             {children}
         </AuthContext.Provider>
     )

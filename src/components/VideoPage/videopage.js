@@ -9,10 +9,11 @@ import { useAuth } from "../../Contexts/authcontext";
 // import { data } from "../../data";
 
 export const VideoPage = () => {
+  
   const {userId} = useAuth();
   const [showModal, setShowModal] = useState(false);
   const { videoId } = useParams();
-  const {getVideoData, dispatch, ifPresentInSaved, ifPresentInLikeVideos } = useData();
+  const {getVideoData, dispatch, ifPresentInSaved, ifPresentInLikeVideos, loading } = useData();
   const video = getVideoData(videoId);
 
 
@@ -52,6 +53,8 @@ export const VideoPage = () => {
 
   return (
     <div className="videopage">
+      {loading?<h2>loading....</h2>:
+      <>
       <Iframe id={video.videoId} />
       <div className="card-content">
         <img
@@ -89,6 +92,7 @@ export const VideoPage = () => {
       </div>
       <Modal showModal={showModal} setShowModal={setShowModal} />
       {/* <Modal setShowModal={setShowModal}/> */}
+      </>}
     </div>
   );
 };

@@ -6,6 +6,8 @@ export const DataContext = createContext();
 
 
 export const DataContextProvider = ({ children }) => {
+  
+  const [loading, setLoading] = useState(true);
 
   const [state, dispatch] = useReducer(dataReducer, {
     videos:[],
@@ -19,6 +21,7 @@ export const DataContextProvider = ({ children }) => {
   const [videoData, setVideoData] = useState(state.videos);
 
   useEffect(()=>{
+    setLoading(true);
     (async ()=>{
       try{
        const data = await restApiCalls("GET","videos");
@@ -27,6 +30,8 @@ export const DataContextProvider = ({ children }) => {
   
       }catch(error){
         console.log(error);
+      }finally{
+        setLoading(false);
       }
       
     })()
@@ -56,7 +61,7 @@ export const DataContextProvider = ({ children }) => {
 
   return (
     <DataContext.Provider
-      value={{ state, dispatch, ifPresentInSaved, ifPresentInLikeVideos, videoData, setVideoData, onSearchData, getVideoData }}
+      value={{ state, dispatch, ifPresentInSaved, ifPresentInLikeVideos, videoData, setVideoData, onSearchData, getVideoData, loading }}
     >
       {children}
     </DataContext.Provider>
