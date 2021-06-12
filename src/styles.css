@@ -20,11 +20,41 @@
   position: sticky;
   z-index: 999;
   top: 0;
-  height: 5rem;
+  height: 3.5rem;
 }
 
 .nav-btn {
   margin: 0px;
+}
+
+.search-bar{
+  width: 100%;
+  padding: .5rem 1rem;
+  outline: none;
+  /* border: 1px solid #0d1225; */
+  background-color: #0d1225;
+  color: white;
+  outline: none;
+  border: none;
+
+}
+
+.login-btn{
+  padding: .4rem 1.3rem;
+  margin: 0rem 1rem;
+  outline: none;
+  border: none;
+  font-size: larger;
+  font-weight: 700;
+
+  background-color: #0d1225;
+  border-radius: 7px;
+
+}
+
+.login-btn .link-btn{
+  text-decoration: none;
+  color: white;
 }
 
 .main {
@@ -34,6 +64,9 @@
 .sidebar {
   width: 200px;
   position: fixed;
+  height: 100%;
+  background-color: #080c20;
+  padding: .5rem .8rem;
   /* display: flex; */
   /* flex-direction: column; */
   /* z-index: 10; */

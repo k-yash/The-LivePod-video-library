@@ -27,7 +27,7 @@ export default function App() {
         console.log(error);
       }})()
     }
-    },[])
+    },[userId])
 
   useEffect(()=>{
     if(isUserLogIn){
@@ -40,7 +40,7 @@ export default function App() {
         console.log(error);
       }})()
     }
-    },[])
+    },[userId])
 
   useEffect(()=>{
     if(isUserLogIn){
@@ -53,7 +53,7 @@ export default function App() {
         console.log(error);
       }})()
     }
-    },[])
+    },[userId])
 
   useEffect(()=>{
     if(isUserLogIn){
@@ -67,7 +67,7 @@ export default function App() {
         console.log(error);
       }})()
     }
-    },[])
+    },[userId])
 
   const [openBars, setOpenBars] = useState(false);
   return (

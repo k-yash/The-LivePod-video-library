@@ -31,7 +31,7 @@ export const Card = ({ video }) => {
               srcSet=""
             />
             <div className="card-description">
-              <h4 style={{ color: "black" }}>{video.name}</h4>
+              <h4 style={{ color: "white" }}>{video.name}</h4>
               <p className="grey-text">{video.creator}</p>
             </div>
           </div>
