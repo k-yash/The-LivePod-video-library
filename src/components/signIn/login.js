@@ -28,7 +28,7 @@ export const Login = () => {
     return (
         <div >
         <div className ="container utility-page">
-            <h1>Log In</h1>
+            <h2>Log In</h2>
             <div className="box">
                 <i className="fa fa-envelope"></i>
                 <input 

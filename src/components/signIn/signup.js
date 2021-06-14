@@ -22,9 +22,10 @@ export const Signup = () => {
 
 
     return (
-        <div className="container">
-    	<h1>Sign Up</h1>
-        <div className="box utility-page">
+		<div>
+        <div className="container utility-page">
+    	<h2>Sign Up</h2>
+        <div className="box ">
     		<i className="fa fa-user"></i>
     		<input 
 			type="name" 
@@ -56,6 +57,7 @@ export const Signup = () => {
     	</div>
     	<button onClick={()=>{createUserCredentials(signUpData)}} className="btn">Sign Up</button>
     </div>
+	</div>
     )
 }
 

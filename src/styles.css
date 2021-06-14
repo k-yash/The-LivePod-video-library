@@ -5,7 +5,7 @@
 * {
   padding: 0;
   margin: 0;
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
   font-family: "Titillium Web", sans-serif;
 }
 
@@ -23,8 +23,27 @@
   height: 3.5rem;
 }
 
+.navigation-bar{
+  height: 3.5rem;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+  margin: auto;
+
+}
+
 .nav-btn {
   margin: 0px;
+}
+
+.main-heading{
+  padding: 1rem;
+  margin: 0rem 2rem;
+  font-weight: bolder;
+  font-size: x-large;
+
 }
 
 .search-bar{
@@ -39,7 +58,12 @@
 
 }
 
-.login-btn{
+.login-div{
+  outline: none;
+  font-size: larger;
+}
+
+/* .login-btn{
   padding: .4rem 1.3rem;
   margin: 0rem 1rem;
   outline: none;
@@ -50,11 +74,12 @@
   background-color: #0d1225;
   border-radius: 7px;
 
-}
+} */
 
-.login-btn .link-btn{
+.link-btn{
   text-decoration: none;
-  color: white;
+  color: black;
+  font-weight: bolder;
 }
 
 .main {
@@ -143,11 +168,31 @@
 }
 
 @media screen and (max-width: 750px) {
+
+
+
+  .navigation-bar{
+    width: 100%;
+    justify-content: space-between;
+   
+  }
+
+  .main-heading{
+    padding: .5rem;
+    margin: 0rem;
+    font-size: 1rem;
+  
+  }
+
+  .login-div{
+    font-size: .9rem;
+  }
+
   .sidebar {
     width: 100%;
     text-align: center;
     left: 100%;
-    background-color: #4c516d;
+    background-color: #080c20;
     transition: all 0.5s;
     height: 100%;
     z-index: 10;
