@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../Contexts/authcontext';
+import Loading from "../LoadingComponent/loading";
 import "./style.css";
 
 export const Signup = () => {
 
-	const {createUserCredentials} = useAuth();
+	const {createUserCredentials, loading} = useAuth();
 
 	const [signUpData, setSignUpData]= useState({
 		name:"",
@@ -17,13 +18,9 @@ export const Signup = () => {
 		setSignUpData((prevData)=>({...prevData, [name]:value}));
 	}
 
-	
-
-
-
     return (
 		<div>
-        <div className="container utility-page">
+        {loading?<Loading/>:<div className="container utility-page">
     	<h2>Sign Up</h2>
         <div className="box ">
     		<i className="fa fa-user"></i>
@@ -56,7 +53,7 @@ export const Signup = () => {
 			placeholder="Enter Your Password"/>
     	</div>
     	<button onClick={()=>{createUserCredentials(signUpData)}} className="btn">Sign Up</button>
-    </div>
+    </div>}
 	</div>
     )
 }

@@ -6,11 +6,13 @@ import {successToast} from "../components/VideoPage/toast";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) =>{
+    const [loading, setLoading] = useState(false);
     const {isUserLoggedIn,userId, name } = JSON.parse(localStorage?.getItem("login"))||{isUserLoggedIn:false};
     const [isUserLogIn, setIsUserLogIn] = useState(isUserLoggedIn);
     const navigate = useNavigate();
 
     const authenticateUser = async(user, from)=>{
+        setLoading(true);
         try{
             const response = await restApiCalls("POST", 'login',user);
             if(response.success){
@@ -22,11 +24,14 @@ export const AuthProvider = ({children}) =>{
         }catch(err){
             console.log(err);
 
+        }finally{
+            setLoading(false);
         }
 
     }
 
     const createUserCredentials = async(userData)=>{
+        setLoading(true)
         try{
             const response = await restApiCalls("POST", 'signup', userData);
             if(response.success){
@@ -36,6 +41,8 @@ export const AuthProvider = ({children}) =>{
 
         }catch(err){
             console.log(err);
+        }finally{
+            setLoading(false)
         }
     }
 
@@ -45,7 +52,7 @@ export const AuthProvider = ({children}) =>{
     }
 
     return(
-        <AuthContext.Provider value={{isUserLogIn, setIsUserLogIn, authenticateUser, logOut, userId, createUserCredentials}}>
+        <AuthContext.Provider value={{isUserLogIn, setIsUserLogIn, authenticateUser, logOut, userId, createUserCredentials, loading}}>
             {children}
         </AuthContext.Provider>
     )

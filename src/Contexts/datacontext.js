@@ -61,7 +61,7 @@ export const DataContextProvider = ({ children }) => {
 
   return (
     <DataContext.Provider
-      value={{ state, dispatch, ifPresentInSaved, ifPresentInLikeVideos, videoData, setVideoData, onSearchData, getVideoData, loading }}
+      value={{ state, dispatch, ifPresentInSaved, ifPresentInLikeVideos, videoData, setVideoData, onSearchData, getVideoData, loading, setLoading }}
     >
       {children}
     </DataContext.Provider>

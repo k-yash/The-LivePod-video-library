@@ -1,14 +1,16 @@
 import { useData } from "../../Contexts/datacontext";
 import { HomeCard } from "./homeCard";
+import Loading from "../LoadingComponent/loading";
 
 export const Home = () => {
 
-  const {videoData} = useData();
+  const {videoData, loading} = useData();
   return (
     <div>
-      {videoData.map((video) => {
+      {loading?<Loading/>:videoData.map((video) => {
         return <HomeCard key = {video.id} video={video} />;
       })}
+
     </div>
   );
 };

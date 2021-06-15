@@ -12,12 +12,13 @@ toast.configure();
 export default function App() {
 
   const {dispatchPlaylist} = usePlaylist();
-  const {dispatch} = useData();
+  const {dispatch, setLoading} = useData();
   const {isUserLogIn}  = useAuth();
   const {userId} = JSON.parse(localStorage?.getItem("login"))||{userId:null};
 
   useEffect(()=>{
     if(isUserLogIn){
+      setLoading(true);
       (async()=>{
       try{
         const response = await restApiCalls("GET",`savedvideos/${userId}`);
@@ -25,12 +26,15 @@ export default function App() {
 
       }catch(error){
         console.log(error);
+      }finally{
+        setLoading(false)
       }})()
     }
     },[userId])
 
   useEffect(()=>{
     if(isUserLogIn){
+      setLoading(true);
       (async()=>{
       try{
         const response = await restApiCalls("GET",`likedVideos/${userId}`);
@@ -38,12 +42,15 @@ export default function App() {
 
       }catch(error){
         console.log(error);
+      }finally{
+        setLoading(false)
       }})()
     }
     },[userId])
 
   useEffect(()=>{
     if(isUserLogIn){
+      setLoading(true);
       (async()=>{
       try{
         const response = await restApiCalls("GET",`history/${userId}`);
@@ -51,12 +58,15 @@ export default function App() {
 
       }catch(error){
         console.log(error);
+      }finally{
+        setLoading(false)
       }})()
     }
     },[userId])
 
   useEffect(()=>{
     if(isUserLogIn){
+      setLoading(true);
       (async()=>{
       try{
         const response = await restApiCalls("GET",`playlist/${userId}`);
@@ -65,6 +75,8 @@ export default function App() {
 
       }catch(error){
         console.log(error);
+      }finally{
+        setLoading(false)
       }})()
     }
     },[userId])

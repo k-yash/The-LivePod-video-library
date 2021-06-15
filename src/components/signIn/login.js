@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { useAuth } from '../../Contexts/authcontext';
 import {useLocation, Link} from "react-router-dom";
 import "./style.css";
+import Loading from "../LoadingComponent/loading";
+
 
 export const Login = () => {
 
@@ -10,7 +12,7 @@ export const Login = () => {
         password:""
     })
 
-    const {authenticateUser} = useAuth();
+    const {authenticateUser, loading} = useAuth();
     const { state } = useLocation();
 
 
@@ -27,7 +29,7 @@ export const Login = () => {
 
     return (
         <div >
-        <div className ="container utility-page">
+        {loading?<Loading/>:<div className ="container utility-page">
             <h2>Log In</h2>
             <div className="box">
                 <i className="fa fa-envelope"></i>
@@ -51,7 +53,7 @@ export const Login = () => {
             </div>
             <Link to="/signup">don't have an account? Click here.</Link>
             <button onClick={()=>{authenticateCredentials()}} className="btn">Sign In</button>
-        </div>
+        </div>}
         </div>
     )
 }

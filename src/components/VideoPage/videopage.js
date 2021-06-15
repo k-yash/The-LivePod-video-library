@@ -6,7 +6,8 @@ import { Modal } from "../Modal/modal";
 import { useParams } from "react-router-dom";
 import {restApiCalls} from "../../Contexts/Utilities/RestAPICalls";
 import { useAuth } from "../../Contexts/authcontext";
-// import { data } from "../../data";
+import Loading from "../LoadingComponent/loading";
+
 
 export const VideoPage = () => {
   
@@ -53,7 +54,7 @@ export const VideoPage = () => {
 
   return (
     <div className="videopage">
-      {loading?<h2>loading....</h2>:
+      {loading?<Loading/>:
       <>
       <Iframe id={video.videoId} />
       <div className="card-content">
