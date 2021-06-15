@@ -5,12 +5,14 @@ import { restApiCalls } from "../../Contexts/Utilities/RestAPICalls";
 import { useAuth } from "../../Contexts/authcontext";
 import { useData } from "../../Contexts/datacontext";
 import Loading from "../LoadingComponent/loading";
+import { useState } from "react";
 
 
 export const MyPlaylist = () => {
   const { state, dispatchPlaylist } = usePlaylist();
   const {loading} = useData();
   const {userId} = useAuth();
+  const [subMenu, setSubMenu] = useState(false);
 
   const deletePlaylistHandler = async(playlistId) =>{
     const response = await restApiCalls("DELETE", `playlist/${userId}/${playlistId}`)
@@ -28,13 +30,22 @@ export const MyPlaylist = () => {
           return (
             <div className="playlists-div">
               <div className="header">
-                <h2>{playlist.title}</h2>
-                {playlist.title !== "Watch later" && (
-                  <button
-                    onClick={() => { deletePlaylistHandler(playlist.id)}}
-                  >
-                    Delete Wishlist
-                  </button>
+                <div className="sub-title">{playlist.title}</div>
+                
+                {playlist.title !== "Watch later" && (<>
+                  <div><i class="fas fa-ellipsis-v-alt grey-text menu-btn" onClick={()=>{setSubMenu((val)=>!val)}}></i> 
+                  <ul className={`sub-menu ${subMenu?"display-menu":"hide-menu"}`}>
+                    <li>Delete</li>
+                    <li>Rename</li>
+                  </ul>
+                  </div>
+                 
+                  </>
+                  // <button
+                  //   onClick={() => { deletePlaylistHandler(playlist.id)}}
+                  // >
+                  //   Delete Wishlist
+                  // </button>
                 )}
               </div>
               <div className="section">

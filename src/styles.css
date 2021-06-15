@@ -118,6 +118,7 @@
 .video-content {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .btn {
@@ -271,6 +272,11 @@ figure.fixedratio {
   overflow: hidden;
   height: min-content;
   line-height: 1.4rem;
+}
+
+.sub-title{
+  font-weight: 900;
+  font-size: larger;
 }
 
 .selected {

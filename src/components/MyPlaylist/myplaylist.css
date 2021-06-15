@@ -1,12 +1,17 @@
+h1{
+  margin-left: 2rem;
+}
+
 .playlists-div {
   border-top: 2px solid #c1c7cc;
   border-width: thin;
-  width: 100%;
+  width: 90%;
+  margin-left: 2rem;
 }
 
 .playlists-div .header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin: 1rem;
   font-size: 1.3rem;
@@ -19,4 +24,37 @@
 
 .header > button {
   padding: 0.2rem;
+}
+
+.menu-btn{
+  cursor: pointer;
+}
+
+.sub-menu{
+  /* display: none; */
+  position: absolute;
+  list-style: none;
+  background-color: white;
+  
+}
+
+.sub-menu li{
+  outline: none;
+  font-size: .9rem;
+  font-weight: 600;
+  padding: .5rem .9rem;
+  cursor: pointer;
+  margin: .2rem 0rem;
+}
+
+.sub-menu li:hover {
+   background-color: #c5cace;
+}
+
+.hide-menu{
+  display: none;
+}
+
+.display-menu{
+  display: block;
 }
