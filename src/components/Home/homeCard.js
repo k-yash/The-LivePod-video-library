@@ -9,7 +9,7 @@ export const HomeCard = ({ video }) => {
   const {userId} = useAuth();
 
   const addToHistoryHandler = async() =>{
-    const response = await restApiCalls("POST", `history/${userId}`, {videoId:video.id});
+    const response = await restApiCalls("POST", `history/`, {videoId:video.id});
     if(response.success){
       dispatch({ type: "ADD_HISTORY", payload: video });
     }
@@ -31,7 +31,7 @@ export const HomeCard = ({ video }) => {
               srcSet=""
             />
             <div className="card-description">
-              <h4 style={{ color: "white" }}>{video.name}</h4>
+              <div style={{ color: "white", fontSize:"1rem" }}>{video.name}</div>
               <p className="grey-text">{video.creator}</p>
             </div>
           </div>

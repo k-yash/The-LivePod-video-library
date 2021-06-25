@@ -22,12 +22,12 @@ export const VideoPage = () => {
 
   const likedVideosHandler = async() =>{
     if(ifPresentInLikeVideos(video.videoId)){
-      const response = await restApiCalls("DELETE",`likedvideos/${userId}/${video.id}`)
+      const response = await restApiCalls("DELETE",`likedvideos/${video.id}`)
       if(response.success){
         dispatch({ type: "REMOVE_FROM_LIKED_VIDEOS", payload: video })
       }
     }else{
-      const response = await restApiCalls("POST",`likedvideos/${userId}`, {videoId:video.id})
+      const response = await restApiCalls("POST",`likedvideos`, {videoId:video.id})
       if(response.success){
         dispatch({ type: "ADD_TO_LIKED_VIDEOS", payload: video })
       }
@@ -37,13 +37,13 @@ export const VideoPage = () => {
 
   const savedVideosHandler = async() => {
     if(ifPresentInSaved(video.videoId)){
-      const response = await restApiCalls("DELETE",`savedvideos/${userId}/${video.id}`)
+      const response = await restApiCalls("DELETE",`savedvideos/${video.id}`)
       if(response.success){
         dispatch({ type: "REMOVE_FROM_SAVED_VIDEOS", payload: video })
       }
       
     }else{
-      const response = await restApiCalls("POST",`savedvideos/${userId}`, {videoId:video.id})
+      const response = await restApiCalls("POST",`savedvideos`, {videoId:video.id})
       if(response.success){
         dispatch({ type: "ADD_TO_SAVED_VIDEOS", payload: video })
       }

@@ -8,19 +8,37 @@ import Loading from "../LoadingComponent/loading";
 import { useState } from "react";
 
 
-export const MyPlaylist = () => {
-  const { state, dispatchPlaylist } = usePlaylist();
-  const {loading} = useData();
+const SubMenu = (playlist) =>{
+  const {dispatchPlaylist } = usePlaylist();
   const {userId} = useAuth();
-  const [subMenu, setSubMenu] = useState(false);
+  // const [subMenu, setSubMenu] = useState(false);
+ 
 
   const deletePlaylistHandler = async(playlistId) =>{
-    const response = await restApiCalls("DELETE", `playlist/${userId}/${playlistId}`)
+    // setSubMenu((val)=>false);
+    const response = await restApiCalls("DELETE", `playlist/${playlistId}`)
     if(response.success){
       dispatchPlaylist({ type: "DELETE_PLAYLIST", payload: playlistId });
     }
     
   }
+  return(
+  <div>
+    {/* <i class="fas fa-ellipsis-v-alt grey-text menu-btn" onClick={()=>{setSubMenu((val)=>!val)}}></i>  */}
+    <i onClick={()=>{deletePlaylistHandler(playlist.id)}} class="fas fa-trash grey-text trash-can"></i>
+    {/* <ul className={`sub-menu ${subMenu?"display-menu":"hide-menu"}`}>
+      <li >Delete Playlist</li>
+      <li>Rename</li>
+    </ul> */}
+  </div>
+  )
+}
+
+
+export const MyPlaylist = () => {
+  const { state, dispatchPlaylist } = usePlaylist();
+  const {loading} = useData();
+
 
   return (
     <div className="utility-page">
@@ -31,24 +49,9 @@ export const MyPlaylist = () => {
             <div className="playlists-div">
               <div className="header">
                 <div className="sub-title">{playlist.title}</div>
-                
-                {playlist.title !== "Watch later" && (<>
-                  <div><i class="fas fa-ellipsis-v-alt grey-text menu-btn" onClick={()=>{setSubMenu((val)=>!val)}}></i> 
-                  <ul className={`sub-menu ${subMenu?"display-menu":"hide-menu"}`}>
-                    <li>Delete</li>
-                    <li>Rename</li>
-                  </ul>
-                  </div>
-                 
-                  </>
-                  // <button
-                  //   onClick={() => { deletePlaylistHandler(playlist.id)}}
-                  // >
-                  //   Delete Wishlist
-                  // </button>
-                )}
+                {playlist.title !== "Watch later" && (<SubMenu key={playlist.id} {...playlist}/> )}
               </div>
-              <div className="section">
+              <div className="videos-section">
                 {playlist.videos.map(({video}) => {
                   return <Card key={video.id} video={video} />;
                 })}

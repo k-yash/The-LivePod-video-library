@@ -6,7 +6,7 @@ export const Home = () => {
 
   const {videoData, loading} = useData();
   return (
-    <div>
+    <div className="videos-section">
       {loading?<Loading/>:videoData.map((video) => {
         return <HomeCard key = {video.id} video={video} />;
       })}

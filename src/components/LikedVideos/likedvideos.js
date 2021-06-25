@@ -5,10 +5,10 @@ import Loading from "../LoadingComponent/loading";
 export const LikedVideos = () => {
   const { state, loading } = useData();
   return (
-    <div className="utility-page">
+    <div>
       <h1>Liked Videos</h1>
       {loading?<Loading/>:
-      <div className="video-content">
+      <div className="videos-section">
         {state.liked.map(({video}) => {
           return <Card key={video.id} video={video} />;
         })}

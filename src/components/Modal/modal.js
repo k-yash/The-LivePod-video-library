@@ -25,12 +25,12 @@ export const Modal = ({ showModal, setShowModal }) => {
 
   const playlistHandler = async(playlistId) => {
     if (ifPresentInPlaylist(playlistId, videoss.videoId)) {
-      const response = await restApiCalls("DELETE", `playlist/${userId}/${playlistId}/${videoss.id}`);
+      const response = await restApiCalls("DELETE", `playlist/${playlistId}/${videoss.id}`);
       if(response.success){
         dispatchPlaylist({ type: "REMOVE_FROM_PLAYLIST", payload: { id: playlistId, videoId: videoss.videoId }});
         darkToast("Removed from playlist!")};
     } else {
-     const response = await restApiCalls("POST", `playlist/${userId}/${playlistId}`, {videoId: videoss.id});
+     const response = await restApiCalls("POST", `playlist/${playlistId}`, {videoId: videoss.id});
      if(response.success){
         dispatchPlaylist({ type: "ADD_TO_PLAYLIST", payload: { id: playlistId, video: videoss }});
         darkToast("Added to playlist!");
@@ -39,7 +39,7 @@ export const Modal = ({ showModal, setShowModal }) => {
   };
 
   const createNewPlaylist = async() =>{
-    const response = await restApiCalls("POST", `playlist/${userId}`, {playlistName:playlist, videoId: videoss.id});
+    const response = await restApiCalls("POST", `playlist`, {playlistName:playlist, videoId: videoss.id});
     if(response.success){
       dispatchPlaylist({type: "SET_PLAYLIST", payload: response.response.playlists});
       setShowModal((val) => !val);

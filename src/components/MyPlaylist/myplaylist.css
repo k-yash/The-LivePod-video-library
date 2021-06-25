@@ -26,18 +26,19 @@ h1{
   padding: 0.2rem;
 }
 
-.menu-btn{
+.trash-can{
   cursor: pointer;
+  font-size: larger;
 }
 
-.sub-menu{
-  /* display: none; */
+/* .sub-menu{
+
   position: absolute;
   list-style: none;
   background-color: white;
   
-}
-
+} */
+/* 
 .sub-menu li{
   outline: none;
   font-size: .9rem;
@@ -45,9 +46,9 @@ h1{
   padding: .5rem .9rem;
   cursor: pointer;
   margin: .2rem 0rem;
-}
+} */
 
-.sub-menu li:hover {
+/* .sub-menu li:hover {
    background-color: #c5cace;
 }
 
@@ -57,4 +58,4 @@ h1{
 
 .display-menu{
   display: block;
-}
+} */

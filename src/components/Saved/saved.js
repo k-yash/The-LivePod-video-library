@@ -5,10 +5,10 @@ import Loading from "../LoadingComponent/loading";
 export const Saved = () => {
   const { state, loading } = useData();
   return (
-    <div className="utility-page">
+    <div className="main-div">
       <h1>Saved Videos</h1>
       {loading?<Loading/>:
-      <div className="video-content">
+      <div className="videos-section">
         {state.saved.map(({video}) => {
           return <Card key={video.id} video={video} />;
         })}

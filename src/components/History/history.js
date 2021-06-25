@@ -6,10 +6,10 @@ export const History = () => {
   const { state , loading} = useData();
   console.log("final",state.history)
   return (
-    <div className="utility-page">
+    <div >
       <h1>Watch History</h1>
       {loading?<Loading/>:
-      <div className="video-content">
+      <div className="videos-section">
         {state.history.map(({video}) => {
           return <Card video={video} />;
         })}
