@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import {restApiCalls} from "../../Contexts/Utilities/RestAPICalls";
 import { useAuth } from "../../Contexts/authcontext";
 import Loading from "../LoadingComponent/loading";
+import NoteContainer from "./Notes/noteContainer";
 
 
 export const VideoPage = () => {
@@ -56,43 +57,50 @@ export const VideoPage = () => {
     <div className="videopage">
       {loading?<Loading/>:
       <>
-      <Iframe id={video.videoId} />
-      <div className="card-content">
-        <img
-          className="avatar"
-          src="https://yt3.ggpht.com/ytc/AAUvwnhpNjTTcnunYN6sA0COpo4a1XScMe9cTeP-45fPzw=s176-c-k-c0x00ffffff-no-rj"
-          alt=""
-          srcSet=""
-        />
-        <div className="card-description">
-          <h4>{video.name}</h4>
-          <p className="grey-text">{video.creator}</p>
-          <div>{video.description}</div>
+      <div>
+        <Iframe id={video.videoId} />
+        <div className="card-content">
+          <img
+            className="avatar"
+            src="https://yt3.ggpht.com/ytc/AAUvwnhpNjTTcnunYN6sA0COpo4a1XScMe9cTeP-45fPzw=s176-c-k-c0x00ffffff-no-rj"
+            alt=""
+            srcSet=""
+          />
+          <div className="card-description">
+            <h4>{video.name}</h4>
+            <p className="grey-text">{video.creator}</p>
+            <div>{video.description}</div>
+          </div>
         </div>
-      </div>
-      <div className="func-icon">
-        <i
-          style={{
-            color: ifPresentInLikeVideos(video.videoId) ? "skyblue" : "grey"
-          }}
-          onClick={() => likedVideosHandler() }
-          className="far fa-thumbs-up"
-        ></i>
-        <i
-          onClick={() => {
-            setShowModal((val) => !val);
-          }}
-          className="fal fa-bars"
-        ></i>
+        <div className="func-icon">
+          <i
+            style={{
+              color: ifPresentInLikeVideos(video.videoId) ? "skyblue" : "grey"
+            }}
+            onClick={() => likedVideosHandler() }
+            className="far fa-thumbs-up"
+          ></i>
+          <i
+            onClick={() => {
+              setShowModal((val) => !val);
+            }}
+            className="fal fa-bars"
+          ></i>
 
-        <i
-          style={{ color: ifPresentInSaved(video.videoId) ? "red" : "grey" }}
-          onClick={() => savedVideosHandler() }
-          className="far fa-bookmark"
-        ></i>
+          <i
+            style={{ color: ifPresentInSaved(video.videoId) ? "red" : "grey" }}
+            onClick={() => savedVideosHandler() }
+            className="far fa-bookmark"
+          ></i>
+          <Modal showModal={showModal} setShowModal={setShowModal} />
+        </div>
+        
+        {/* <Modal setShowModal={setShowModal}/> */}
       </div>
-      <Modal showModal={showModal} setShowModal={setShowModal} />
-      {/* <Modal setShowModal={setShowModal}/> */}
+
+      <div>
+        <NoteContainer videoId = {video.id}/>
+      </div>
       </>}
     </div>
   );

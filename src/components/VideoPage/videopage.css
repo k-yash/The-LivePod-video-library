@@ -1,8 +1,17 @@
+
+.videopage{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
 .iframe-container {
+
   position: relative;
-  width: 61.25%;
-  padding-bottom: 33.25%;
+  width: 90.25%;
+  padding-bottom: 48.25%;
   height: 0rem;
+  margin: 1rem;
+
 }
 .iframe-container iframe {
   position: absolute;
@@ -21,8 +30,14 @@
 }
 
 @media screen and (max-width: 1000px) {
+  
+  .videopage{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
   .iframe-container {
-    width: 100%;
+    width: 94%;
     padding-bottom: 57.25%;
   }
   h3 {

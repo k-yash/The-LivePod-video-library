@@ -23,6 +23,15 @@ export const dataReducer = (state, action) => {
           liked: state.liked.filter(({video}) => video.videoId !== action.payload.videoId)
         });
 
+      case "ADD_NOTE":
+        return (state = {...state, notes: [...state.notes, action.payload]});
+        
+      case "UPDATE_NOTE":
+        return (state = {...state, notes: state.notes.map((note)=> note.id === action.payload.id? action.payload: note)});
+        
+      case "DELETE_NOTE":
+        return (state = {...state, notes: state.notes.filter((note)=>note.id !== action.payload)});  
+
       case "ADD_HISTORY":
         return (state = {
           ...state,

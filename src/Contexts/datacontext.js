@@ -15,6 +15,7 @@ export const DataContextProvider = ({ children }) => {
     saved: [],
     playlist: [],
     liked: [],
+    notes:[],
     history: []
   });
 
