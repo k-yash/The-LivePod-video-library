@@ -12,19 +12,52 @@ export const Login = () => {
         password:""
     })
 
+    const [inputError, setInputError] = useState({
+        email:"",
+        password:""
+    })
+
     const {authenticateUser, loading} = useAuth();
     const { state } = useLocation();
 
+
+    const verifyEmail = ()=>{
+        const emailRegex = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+        return emailRegex.test(loginData.email);
+    }
+
+	const validateInput = () => {
+        setInputError({
+            email:"",
+            password:""
+        });
+        
+		let userValidate = true;
+        if(!loginData.password){
+            setInputError((prev)=>({...prev, password:"Enter a valid password"}));
+			userValidate = false;
+        }
+
+        if(!loginData.email || !verifyEmail()){
+            setInputError((prev)=>({...prev, email:"Enter a valid email"}));
+			userValidate = false;
+        }
+
+		return userValidate;
+
+    }
 
     const inputEvent = (event) =>{
         const {name, value} = event.target;
         setLoginData((prev)=>({...prev, [name]:value}));
     }
-    // console.log(loginData);
 
     const authenticateCredentials = () =>{
-        const from = state?.from? state.from:"/";
-        authenticateUser(loginData, from);
+        if(validateInput()){
+            const from = state?.from? state.from:"/";
+            authenticateUser(loginData, from);
+        }
+        
     }
 
     return (
@@ -41,6 +74,7 @@ export const Login = () => {
                 onChange={inputEvent} 
                 placeholder="Enter Your Email"/>
             </div>
+            <span>{inputError.email}</span>
             <div className="box">
                 <i className="fa fa-key"></i>
                 <input 
@@ -51,6 +85,7 @@ export const Login = () => {
                 onChange={inputEvent} 
                 placeholder="Enter Your Password"/>
             </div>
+            <span>{inputError.password}</span><br/>
             <Link to="/signup">don't have an account? Click here.</Link>
             <button onClick={()=>{authenticateCredentials()}} className="btn">Sign In</button>
         </div>}

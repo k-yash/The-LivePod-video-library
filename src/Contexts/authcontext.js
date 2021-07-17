@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import {restApiCalls} from "./Utilities/RestAPICalls";
 import {useNavigate} from "react-router-dom";
-import {successToast} from "../components/VideoPage/toast";
+import {successToast, errorToast} from "../components/VideoPage/toast";
 import axios from "axios";
 
 export const AuthContext = createContext();
@@ -29,7 +29,10 @@ export const AuthProvider = ({children}) =>{
                 navigate(from);
             }
         }catch(err){
+            console.log("wwookkkakakaka")
+            successToast("Invalid Credentials.");
             console.log(err);
+            
 
         }finally{
             setLoading(false);
@@ -47,7 +50,6 @@ export const AuthProvider = ({children}) =>{
     }
 
     function setupAuthHeaderForServiceCalls(token) {
-        console.log("Hi1",token)
         if (token) {
           return (axios.defaults.headers.common["Authorization"] =  `Bearer ${token}`);
         }
