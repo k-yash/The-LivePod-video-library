@@ -64,6 +64,7 @@ export const Modal = ({ showModal, setShowModal }) => {
                 : setShowInputbox((val) => val);
             }}
             class="fas fa-times"
+            
           ></i>
         </div>
         <div className="modal-playlists">

@@ -1,6 +1,7 @@
 import { useReducer } from "react";
 import { restApiCalls } from "../../../Contexts/Utilities/RestAPICalls";
 import {useData} from "../../../Contexts/datacontext";
+import {darkToast} from "../toast";
 
 const initialNoteState = {
   id: "",
@@ -34,14 +35,16 @@ const EditNote = ({ note = initialNoteState, videoId, editMode=false, setEditMod
   const {dispatch} = useData();
 
   const addNote = async(noteState) => {
+    darkToast("Adding Toast...");
     const data = await restApiCalls("POST", `notes/${videoId}`, {title: noteState.title, description: noteState.description});
     if(data.success){
       dispatch({type:"ADD_NOTE", payload: data.response});
     }
-
+   
   };
 
   const updateNote = async(noteState) =>{
+    darkToast("Updating Toast...")
     const data = await restApiCalls("POST", `notes/${videoId}/${note.id}`, {title: noteState.title, description: noteState.description});
     if(data.success){
       dispatch({type:"UPDATE_NOTE", payload: data.response});

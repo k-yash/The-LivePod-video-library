@@ -2,6 +2,7 @@ import { useState } from "react";
 import EditNote from "./editNote";
 import { restApiCalls } from "../../../Contexts/Utilities/RestAPICalls";
 import {useData} from "../../../Contexts/datacontext";
+import {darkToast} from "../toast";
 
 
 const Note = ({ note}) => {
@@ -9,6 +10,7 @@ const Note = ({ note}) => {
   const {dispatch} = useData();
 
   const deleteNote = async() =>{
+    darkToast("Deleting Toast...")
     const data = await restApiCalls("DELETE", `notes/${note.videoId}/${note.id}`);
     if(data.success){
       dispatch({type:"DELETE_NOTE", payload:note.id});

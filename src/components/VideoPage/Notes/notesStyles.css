@@ -31,6 +31,44 @@
   width: 12rem;
 }
 
+.Login-notes{
+  color: white;
+  font-size: large;
+  background-color: #080c20;
+  padding: 1rem;
+  margin-top: 1rem;
+  border: 1px solid white;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.Login-notes img{
+  color: white;
+  height: 18rem;
+  max-width: 18rem;
+}
+
+.Login-notes button{
+  padding: .5rem;
+  background-color: transparent;
+  color: white;
+  font-weight: 800;
+  font-size: large ;
+  border: 1px solid white;
+  border-radius: .4rem;
+  cursor: pointer;
+
+}
+
+.Login-notes button:hover{
+  padding: .65rem;
+  background-color: #080c20;
+}
+
+
 input:focus {
   outline: none;
   border: 2px solid white;
