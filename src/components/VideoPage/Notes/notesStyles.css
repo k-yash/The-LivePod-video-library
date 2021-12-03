@@ -15,7 +15,7 @@
 .note-btn {
   background-color: transparent;
   border: none;
-  color: purple;
+  color: paleturquoise;
   font-size: 2rem;
   cursor: pointer;
   outline: none;
@@ -105,7 +105,7 @@ textarea:focus {
   font-weight: 700;
   margin-bottom: 0.5rem;
   font-size: 1rem;
-  color: purple;
+  color: paleturquoise;
 }
 
 .note-sub {
