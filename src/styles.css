@@ -153,6 +153,20 @@
   cursor: pointer;
 }
 
+.logout-btn{
+  padding: .2rem 0.4rem;
+  color: #080c20;
+  background-color: transparent;
+  font-size: 1.2rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.logout-btn:hover{
+  padding: .3rem .6rem;
+}
+
 
 @media screen and (max-width:1350px) {
   .videos-section {
