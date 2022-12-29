@@ -1,5 +1,5 @@
 import axios from "axios";
-const BackendApi = process.env.REACT_APP_BACKEND_API;
+const BackendApi = https://the-live-pod-api-es9y.vercel.app;
 
 export const restApiCalls = async(method, route, data = null) =>{
     switch (method) {
